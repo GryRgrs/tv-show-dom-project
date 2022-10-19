@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .allEpisodesDiv {
   color: black;
   display: flex;
@@ -10,13 +9,8 @@
 
 p {
   max-width: 150px;
-
 }
 
 .episodeName {
-max-width: 150px;
-=======
-#root {
-  color: black;
->>>>>>> d6d84b9013b6a7e5e7c82802933f8408c12a7312
+  max-width: 150px;
 }

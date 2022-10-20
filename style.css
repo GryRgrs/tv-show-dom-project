@@ -1,3 +1,16 @@
-#root {
+.allEpisodesDiv {
   color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: lightgray;
+  margin: 0;
+}
+
+p {
+  max-width: 150px;
+}
+
+.episodeName {
+  max-width: 150px;
 }

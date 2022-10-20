@@ -1,18 +1,9 @@
 let allEpisodes = getAllEpisodes();
 let documentElement = document.getElementById("root");
-let episodeTab,
-  episodeName,
-  episodeThumbnail,
-  episodeSummary,
-  searchField,
-  allEpisodesDiv;
 
-searchField = documentElement.appendChild(document.createElement("input"));
-searchField.id = "searchField";
-allEpisodesDiv = documentElement.appendChild(document.createElement("div"));
-allEpisodesDiv.className = "allEpisodesDiv";
+let searchField = document.querySelector("input");
 
-<<<<<<< HEAD
+
 fetch("https://api.tvmaze.com/shows/82/episodes")
 .then(function (response) {
 return response.json();
@@ -20,35 +11,22 @@ return response.json();
 .then(function (data) {
 allEpisodes = data;
 makePageForEpisodes(allEpisodes);
-console.log(allEpisodes);
 })
 .catch((error) => {
 });
 
-=======
-// fetch("https://api.tvmaze.com/shows/82/episodes")
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data);
-//     allEpisodes = data;
-//     makePageForEpisodes(allEpisodes);
-//     console.log(allEpisodes);
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
 
-//searchField.addEventListener("keydown", () => {});
->>>>>>> refs/remotes/origin/master
 function makePageForEpisodes(episode) {
   episode.forEach((item) => {
-    episodeTab = allEpisodesDiv.appendChild(document.createElement("section"));
-    episodeName = episodeTab.appendChild(document.createElement("h1"));
-    episodeThumbnail = episodeTab.appendChild(document.createElement("img"));
-    episodeSummary = episodeTab.appendChild(document.createElement("p"));
-    episodeTab.className = "episodeTab";
+    let episodesContainer = document.createElement("section");
+    episodesContainer.className = "episode-container"
+    documentElement.appendChild(episodesContainer);
+    let episodeName = document.createElement("h1");
+    episodesContainer.appendChild(episodeName);
+    let episodeThumbnail = document.createElement("img");
+    episodesContainer.appendChild(episodeThumbnail);
+    let episodeSummary = document.createElement("p");
+    episodesContainer.appendChild(episodeSummary);
     episodeName.className = "episodeName";
     episodeThumbnail.className = "episodeThumbnail";
     episodeSummary.className = "episodeSummary";
@@ -57,28 +35,26 @@ function makePageForEpisodes(episode) {
     )}E${("0" + item.number).slice(-2)}`;
     episodeThumbnail.src = item.image.medium;
     episodeSummary.innerHTML = item.summary;
-  });
-}
-makePageForEpisodes(allEpisodes);
+    });
+  }
+
+  makePageForEpisodes(allEpisodes);
 
 const searchEpisodes = (episode) => {
-  const input = document.getElementById("searchField");
-  input.addEventListener("input", (event) => {
-    let searchTerm = event.target.value.toLowerCase();
-
-    let filteredEpisodes = episode.filter((item) => {
-      return (
-        item.name.toLowerCase().includes(searchTerm) ||
-        item.summary.toLowerCase().includes(searchTerm)
-      );
+  searchField.addEventListener("input", (event) => {
+  let searchTerm = event.target.value.toLowerCase();
+console.log(searchTerm)
+let filteredEpisodes = episode.filter((item) => {
+    return (
+    item.name.toLowerCase().includes(searchTerm) ||
+    item.summary.toLowerCase().includes(searchTerm)
+    );
     });
-    allEpisodesDiv.innerHTML = "";
-    console.log(allEpisodesDiv);
-<<<<<<< HEAD
-=======
-    //numberOfShows.innerText = `Displaying ${filteredEpisodes.length}/$(episode.length)`;
->>>>>>> refs/remotes/origin/master
+    
+documentElement.innerHTML = "";
+    let numberOfShows.innerText = `Displaying ${filteredEpisodes.length}/$(episode.length)`;
     makePageForEpisodes(filteredEpisodes);
   });
 };
+
 searchEpisodes(allEpisodes);

@@ -1,27 +1,22 @@
-.allEpisodesDiv {
+#root {
   color: black;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: auto ;
+  width: 90%;
+  gap: 1.5rem;
+}
+
+.episode-container {
+  width:100%;
+  margin:0 auto; 
+  text-align:center;
   background-color: lightgray;
-  margin: 0;
-<<<<<<< HEAD
-=======
 }
 
 p {
-  max-width: 150px;
+  width: 85%;
+  margin:auto;
+  text-align: left;
 }
 
-.episodeName {
-  max-width: 150px;
->>>>>>> refs/remotes/origin/master
-}
-
-p {
-  max-width: 150px;
-}
-
-.episodeName {
-  max-width: 150px;
-}

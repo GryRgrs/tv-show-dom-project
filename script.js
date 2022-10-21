@@ -1,19 +1,34 @@
-let allEpisodes = getAllEpisodes();
+let allEpisodes;
 let documentElement = document.getElementById("root");
 
 let searchField = document.querySelector("input");
 
+console.log(searchField);
 
-fetch("https://api.tvmaze.com/shows/82/episodes")
-.then(function (response) {
-return response.json();
-})
-.then(function (data) {
-allEpisodes = data;
+const setup = async() => {
+try {
+const response = await fetch("https://api.tvmaze.com/shows/82/episodes");
+allEpisodes = await response.json();
+console.log(allEpisodes);
 makePageForEpisodes(allEpisodes);
-})
-.catch((error) => {
-});
+searchEpisodes(allEpisodes); 
+} catch (error) {
+  console.log(error);
+}
+}
+// function setup () {
+
+// fetch("https://api.tvmaze.com/shows/82/episodes")
+// .then(function (response) {
+// allEpisodes = response.json();
+// console.log(allEpisodes);
+// makePageForEpisodes(allEpisodes);
+// searchEpisodes(allEpisodes);
+// })
+// .catch((error) => {
+// console.log(error);
+// });  
+// }
 
 
 function makePageForEpisodes(episode) {
@@ -38,9 +53,7 @@ function makePageForEpisodes(episode) {
     });
   }
 
-  makePageForEpisodes(allEpisodes);
-
-const searchEpisodes = (episode) => {
+  const searchEpisodes = (episode) => {
   searchField.addEventListener("input", (event) => {
   let searchTerm = event.target.value.toLowerCase();
 console.log(searchTerm)
@@ -52,9 +65,12 @@ let filteredEpisodes = episode.filter((item) => {
     });
     
 documentElement.innerHTML = "";
-    let numberOfShows.innerText = `Displaying ${filteredEpisodes.length}/$(episode.length)`;
+    let numberOfShows = document.querySelector(".numberofshows")
+    numberOfShows.innerText = `Displaying ${filteredEpisodes.length}/${episode.length}`;
     makePageForEpisodes(filteredEpisodes);
+    numberOfShows.style.display = "block"
+    if (searchTerm === "") numberOfShows.style.display = "none";  
   });
 };
 
-searchEpisodes(allEpisodes);
+window.onload = setup;

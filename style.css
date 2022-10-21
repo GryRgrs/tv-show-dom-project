@@ -20,3 +20,6 @@ p {
   text-align: left;
 }
 
+.numberofshows {
+  display: none;
+}

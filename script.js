@@ -7,7 +7,7 @@ console.log(searchField);
 
 const setup = async() => {
 try {
-const response = await fetch("https://api.tvmaze.com/shows/82/episodes");
+const response = await fetch("https://api.tvmaze.com/shows");
 allEpisodes = await response.json();
 console.log(allEpisodes);
 makePageForEpisodes(allEpisodes);
@@ -16,20 +16,6 @@ searchEpisodes(allEpisodes);
   console.log(error);
 }
 }
-// function setup () {
-
-// fetch("https://api.tvmaze.com/shows/82/episodes")
-// .then(function (response) {
-// allEpisodes = response.json();
-// console.log(allEpisodes);
-// makePageForEpisodes(allEpisodes);
-// searchEpisodes(allEpisodes);
-// })
-// .catch((error) => {
-// console.log(error);
-// });  
-// }
-
 
 function makePageForEpisodes(episode) {
   episode.forEach((item) => {
@@ -72,5 +58,7 @@ documentElement.innerHTML = "";
     if (searchTerm === "") numberOfShows.style.display = "none";  
   });
 };
+
+
 
 window.onload = setup;

@@ -3,19 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Show Project | My Name (My GitHub username)</title>
+    <title>TV Show Project | Gary Rogers (GryRgrs)</title>
     <link href="style.css" rel="stylesheet" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
 
+  <header>
+  <h2>Search for Your Favourite TV Show.......</h2>
+  <img src="https://www.freewebheaders.com/wp-content/gallery/movies-tv/colored-tv-pattern-header-6803.jpg" alt="tv image">
+  <br>
+  </header>
+
   <body>
-    <div id="root">
-    </div>
+    <body style="background-color:lightskyblue;"></body>
+
+    <input id ="searchField" input type="text" placeholder="Search"/><br><br><br>
+    <input id="selectAllShows" input type="text" placeholder="Select Shows"></select><br><br><br>
+    <input id="selectAllEpisodes" input type="text" placeholder="Select Episodes"></select><br><br><br>
+  
+
+    <p class="numberofshows"></p>
+    <div id="root"></div>
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
 
     <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>
+     <footer class="footer">
+    This content is from <a href="https://www.tvmaze.com/">TV Maze</a>
+  </footer>
   </body>
 </html>
